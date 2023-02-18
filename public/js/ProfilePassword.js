@@ -1,34 +1,8 @@
 "use strict";
 
-const timeElement = document.querySelector(".time");
-
-const dateElement = document.querySelector(".date");
-
-function formatTime(date) {
-  const hours12 = date.getHours() % 12 || 12;
-  const minutes = date.getMinutes();
-  const isAm = date.getHours() < 12;
-
-  return `${hours12.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")} ${isAm ? "AM" : "PM"}`;
-}
-function formatDate(date){
-
-  const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-  const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-
-  return `${days[date.getDay()]}, ${months[date.getMonth()]} ${date.getDate()} ${date.getFullYear()}`;
-}
-
-setInterval(() =>{
-  const now = new Date ();
-
-  timeElement.textContent = formatTime(now);
-  dateElement.textContent = formatDate(now);
-}, 1000);
-
 const $ = (selector) => document.querySelector(selector);
 
-let temp = [100, 50, 20, 10, 5];
+let bills = [100, 50, 20, 10, 5];
 
 const dispenseMoney = (evt) => {
 

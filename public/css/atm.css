@@ -1,13 +1,14 @@
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     background-color: white;
     margin: 0 auto;
     width: 600px;
-    border: 3px solid blue;
+    border: 3px solid #228a22;
     padding: 0 2em 1em;
 }
 h1 {
-    color: blue;
+    text-align: center;
+    color: burlywood;
 }
 div {
     margin-bottom: 1em;
@@ -20,6 +21,16 @@ label {
 input {
     margin-left: 1em;
     margin-right: 0.5em;
+}
+
+.date {
+    font-size: 1.5em;
+    color: burlywood;
+}
+
+.time{
+    font-size: 1em;
+    margin-top: 12px;
 }
 
 span {

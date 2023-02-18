@@ -1,51 +1,46 @@
 <!DOCTYPE html>
 <html>
+  <div class="dateAndTime"></div>
+  <div class="date"></div>
+  <div class="time"></div>
   <head>
     <link rel="stylesheet" href="css/atm.css" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Automatic Teller Machine</title>
+    <title>Thermostar</title>
   </head>
   <body>
     <main>
-      <h1>Automatic Teller Machine</h1>
+      <h1>Thermostar</h1>
       <form id="atm_form" name="atm_form">
         <div>
-          <label for="money">Money to dispense:</label>
-          <input type="text" id="money" name="money" />
-          <span id="money-error"></span>
+          <label for="deviceName">Device Name</label>
+          <input type="text" id="deviceName" name="deviceName" />
         </div>
         <div>
-          <label for="phone-number">Money to dispense:</label>
-          <input type="text" id="phone-number" name="phone-number" />
-          <span id="phone-number-error"></span>
+          <label for="notifications">Notifications?</label>
+          <input type="checkbox" id="notifications" name="notifications" />
         </div>
         <div>
-          <label>$100s dispensed: </label>
-          <input type="text" id="bill100s" name="bill100s" disabled />
+          <label for="lighting">Lighting Settings</label>
         </div>
         <div>
-          <label>$50s dispensed: </label>
-          <input type="text" id="bill50s" name="bill50s" disabled />
+          <label for="postal-number">Input your postal code here:</label>
+          <input type="text" id="postal-number" name="postal-number" />
+          <span id="postal-number-error"></span>
+        </div>
+        <div></div>
+        <div>
+          <label for="temp">Choose your temperature here</label>
+          <input type="range" id="temp" name="temp" 
         </div>
         <div>
-          <label>$20s dispensed: </label>
-          <input type="text" id="bill20s" name="bill20s" disabled />
-        </div>
-        <div>
-          <label>$10s dispensed: </label>
-          <input type="text" id="bill10s" name="bill10s" disabled />
-        </div>
-        <div>
-          <label>$5s dispensed: </label>
-          <input type="text" id="bill5s" name="bill5s" disabled />
-        </div>
-        <div>
-          <input type="submit" id="dispense-button" value="Dispense Money" />
+          <input type="submit" id="submit-form" value="Submit Form" />
           <input type="button" id="reset" value="Reset Form" />
         </div>
       </form>
     </main>
-    <script src="js/atm.js"></script>
+    <script src="js/atm.js" defer></script>
   </body>
 </html>
+
