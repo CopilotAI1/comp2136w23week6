@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <div class="dateAndTime"></div>
+  <div class="date"></div>
+  <div class="time"></div>
+  <head>
+    <link rel="stylesheet" href="css/atm.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Thermostar</title>
+  </head>
+  <body>
+      <div>
+        <a href=".index.html">Dashboard</a> ||
+        <a href=".Profile.html">Profile</a>
+      </div>
+    <main>
+      <h1 class="logo">Thermostar</h1>
+      <form id="atm_form" name="atm_form">
+        <div class="inputs">
+          <label for="deviceName">Device Name</label>
+          <input type="text" id="deviceName" name="deviceName" />
+        </div>
+        <div class="inputs">
+          <label for="notifications">Notifications?</label>
+          <input type="checkbox" id="notifications" name="notifications" />
+        </div>
+        <div class="inputs">
+          <label for="lighting">Lighting Settings</label>
+          <select name="lightSelector" id="Modes">
+            <option value="full">Full</option>
+            <option value="eco">Eco</option>
+            <option value="away">Away</option>
+            <option value="off">Off</option>
+          </select>
+        </div>
+        <div class="hint">
+          <p>Please enter a Canadian Postal Code, Format:</p>
+          <p>X#X #X#</p>
+        </div> 
+        <div class="inputs">
+          <label for="postalnumber">Input your postal code here:</label>
+          <input type="text" id="postalnumber" name="postalnumber" pattern="^[A-Z]\d[A-Z]\s\d[A-Z]\d$" required/>
+          <span id="postal-number-error"></span>
+        </div>
+        <div class="inputs">
+          <label for="temp">Choose your temperature here:</label>
+          <input type="range" id="temp" name="temp" step=".5" value="22" min="10" max="25" oninput="update(this.value)"/>
+          <p id="tempView">Temp: 22°C</p>
+        </div>
+        <div>
+          <input class="submit" type="button" id="submit-form" value="Submit Form" />
+          <input class="reset" type="submit" id="reset" value="Reset Form" onclick="resetForm()">
+        </div>
+      </form>
+    </main>
+    <script src="js/atm.js" defer></script>
+  </body>
+</html>
+

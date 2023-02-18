@@ -2,7 +2,9 @@
 
 const timeElement = document.querySelector(".time");
 
+
 const dateElement = document.querySelector(".date");
+
 
 function formatTime(date) {
   const hours12 = date.getHours() % 12 || 12;
@@ -11,6 +13,8 @@ function formatTime(date) {
 
   return `${hours12.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")} ${isAm ? "AM" : "PM"}`;
 }
+
+
 function formatDate(date){
 
   const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -19,6 +23,7 @@ function formatDate(date){
   return `${days[date.getDay()]}, ${months[date.getMonth()]} ${date.getDate()} ${date.getFullYear()}`;
 }
 
+
 setInterval(() =>{
   const now = new Date ();
 
@@ -26,70 +31,76 @@ setInterval(() =>{
   dateElement.textContent = formatDate(now);
 }, 1000);
 
-const $ = (selector) => document.querySelector(selector);
 
-let temp = [100, 50, 20, 10, 5];
-
-const dispenseMoney = (evt) => {
-
-  evt.preventDefault();  
-  
-  let money = parseInt($("#money").value);
-
-  let isPossible = false;
-
-  if (money >= 5 && money % 5 == 0) {
-    isPossible = true;
-  }
-
-  if (isPossible) {
-    let moneyLeftToDispense = money;
-
-    for (let bill of bills) {
-      if (moneyLeftToDispense >= bill) {
-        let amountBills = parseInt(moneyLeftToDispense / bill);
-
-        moneyLeftToDispense = moneyLeftToDispense % bill;
-        $(`#bill${bill}s`).value = amountBills;
-      }
-    }
-  } else {
-    $("#money-error").textContent = "We can't dispense that amount of money";
-  }
+function update(val) {
+  var iTemp = document.getElementById(`temp`).value;
+  document.getElementById("tempView").innerHTML = "Temp: " + iTemp + "°C";
 };
 
-const validatePhoneNumber = (evt) =>{
 
-  let re = new RegExp("^[0-9]{10}");
-  
-  let phoneNumber = evt.currentTarget.value;
+function resetForm(){
+  document.getElementById("atm_form").reset();
+};
 
-  if(re.test(phoneNumber)){
-    $("#phone-number-error").textContent = "";
-  }else{
-    $("#phone-number-error").textContent = "The phone number should be in format ##########";
-  }
 
+
+const $ = (selector) => document.querySelector(selector);
+
+var myInput = document.getElementById("password");
+var letter = document.getElementById("letter");
+var capital = document.getElementById("capital");
+var number = document.getElementById("number");
+var length = document.getElementById("length");
+
+
+myInput.onfocus = function() {
+  document.getElementById("message").style.display = "block";
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+myInput.onblur = function() {
+  document.getElementById("message").style.display = "none";
+}
 
-  $("#reset").addEventListener("click", () => {
-    $("#money").value = "";
-    $("#money-error").textContent = "";
+myInput.onkeyup = function() {
+  var lowerCaseLetters = /[a-z]/g;
 
-    for (let bill of bills) {
-      $(`#bill${bill}s`).value = "";
-    }
+  if(myInput.value.match(lowerCaseLetters)) {
+    letter.classList.remove("invalid");
+    letter.classList.add("valid");
+  } 
+  else {
+    letter.classList.remove("valid");
+    letter.classList.add("invalid");
+}
 
-    $("#money").focus();
-  });
 
-  $("#phone-number").addEventListener("input", validatePhoneNumber);
+  var upperCaseLetters = /[A-Z]/g;
 
-  $("#dispense-button").addEventListener("click", dispenseMoney);
+  if(myInput.value.match(upperCaseLetters)) {
+    capital.classList.remove("invalid");
+    capital.classList.add("valid");
+  } 
+  else {
+    capital.classList.remove("valid");
+    capital.classList.add("invalid");
+  }
 
-  $("#money").value = 60;
+  var numbers = /[0-9]/g;
+  if(myInput.value.match(numbers)) {
+    number.classList.remove("invalid");
+    number.classList.add("valid");
+  } 
+  else {
+    number.classList.remove("valid");
+    number.classList.add("invalid");
+  }
 
-  $("#money").focus();
-});
+  if(myInput.value.length <= 12) {
+    length.classList.remove("invalid");
+    length.classList.add("valid");
+  } 
+  else {
+    length.classList.remove("valid");
+    length.classList.add("invalid");
+  }
+}
